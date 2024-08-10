@@ -91,7 +91,7 @@ Stage 3 eliminates semantically related (e.g., relatedness) word-pairs using a s
 **wn_wup:** WordNet-based wup (Zhibiao Wu and Martha Palmer) semantic similarity/relatedness score.
 
 ## Cite
-The paper for with this dataset is currently under peer review. Citation details will be provided here once available.
+The paper for this dataset is currently under peer review. Citation details will be provided here once available.
 
 <!--
 ## Cite
