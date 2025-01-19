@@ -71,7 +71,7 @@ Here are additional resources related to the OSimUnr study that were not generat
 
 | Name | Desc.| Type | English                                                           | Turkish                                                           |
 | ------- | ------ | ------------------------------------------------------------------- | --|------------------------------------------------------------------- |
-| WordSims  |Datasets combining multiple word relatedness datasets with human-annotated ground truth, normalized to a 0-1 scale. Used in Experiments 2a, 2b, and 4.  | wp | [WordSims-REL-EN.csv](others\WordSims-REL-EN.csv) (6,170 wps) | [WordSims-REL-TR.csv](/others/WordSims-REL-TR.csv) (592 wps) |
+| WordSims  |Datasets combining multiple word relatedness datasets with human-annotated ground truth, normalized to a 0-1 scale. Used in Experiments 2a, 2b, and 4.  | wp | [WordSims-REL-EN.csv](others/WordSims-REL-EN.csv) (6,170 wps) | [WordSims-REL-TR.csv](others/WordSims-REL-TR.csv) (592 wps) |
 
 ## Methodology and Notes
 
