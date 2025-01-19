@@ -20,6 +20,7 @@ The OSimUnr dataset consists of nearly one million noun word-pairs (wps) for the
 
 Below are the download links for the final data files:
 
+
 | osim alg. | English (#)                                                   | Turkish                                                       |
 | ----------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | editsim   | [OSimUnr-editsim-EN](OSimUnr-editsim-EN.rar) (570,172 wps)    | [OSimUnr-editsim-TR](OSimUnr-editsim-TR.rar) (333,963 wps)    |
@@ -35,6 +36,7 @@ Following table lists artifacts generated from each stage of the study OSimUnr. 
 
 Single noun words only. Multi-word phrases (e.g., *business suit*, *change of color*) and words with punctuations (e.g., *a-team*, *9/11*, *500*) are filtered out. All words and word-pairs are given in lowercase. Proper nouns (e.g., *einstein*) are included.
 
+
 | Stage | Type | English                                                           | Turkish                                                           |
 | ------- | ------ | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | 1     | word | [S1-FinalWordPool-EN.txt](S1-FinalWordPool-EN.txt) (46,434 words) | [S1-FinalWordPool-TR.txt](S1-FinalWordPool-TR.txt) (24,952 words) |
@@ -43,19 +45,33 @@ Single noun words only. Multi-word phrases (e.g., *business suit*, *change of co
 | 1     | word (in)  | [S1-SingleWordPool-EN.txt](S1-SingleWordPool-EN.txt) (83,118 words) | S1-SingleWordPool-TR.txt         |
 -->
 
-### Stage 2 and 3: Word Pairing and Relatedness Filtering
+### Stage 2,3 and 4: Word Pairing and Relatedness Filtering
 
 Stage 2 exhaustively pairs all words in the word pool (from Stage 1) and keeps word-pairs that are **orthographically similar**. The orthographic similarity of these pairs are calculated using *editsim* and *over_ft23* algorithms.
 
-Stage 3 eliminates semantically related (e.g., relatedness) word-pairs using a separate pipeline, which utilizes many morphological and semantic resources.
+Stage 3 does not yield any dataset; it involves selecting a WordNet-relatedness approximation method for each language.
 
-| #         | Stage                        | Type | English  - editsim (#)                              | English - over_ft23 (#)                               | Turkish -editsim (#)                               | Turkish - over_ft23 (#)                               |
-| ----------- | ------------------------------ | ------ | :---------------------------------------------------- | ------------------------------------------------------- | :--------------------------------------------------- | :------------------------------------------------------ |
-| 2         | Orthographically Similars (OSim)    | wp   | [Q3](S2-OrthographicallySimilarsQ3-editsim-EN.rar) (~4.6M) | [Q3](S2-OrthographicallySimilarsQ3-over_ft23-EN.rar) (~1.1M) | [Q3](S2-OrthographicallySimilarsQ3-editsim-TR.rar) (~2M)  | [Q3](S2-OrthographicallySimilarsQ3-over_ft23-TR.csv) (~406K) |
-|           |                              | wp   | [Q4](S2-OrthographicallySimilarsQ4-editsim-EN.csv) (~54K)  | [Q4](S2-OrthographicallySimilarsQ4-over_ft23-EN.csv) (~37K)  | [Q4](S2-OrthographicallySimilarsQ4-editsim-TR.csv) (~31K) | [Q4](S2-OrthographicallySimilarsQ4-over_ft23-TR.csv) (~18K)  |
-| 3         | Relatedness Filtering        | wp   | [Q3](S3-OSimUnrQ3-editsim-EN.rar) (~567K)           | [Q3](S3-OSimUnrQ3-over_ft23-EN.csv) (~68K)            | [Q3](S3-OSimUnrQ3-editsim-TR.csv) (~332K)          | [Q4](S3-OSimUnrQ3-over_ft23-TR.csv) (~38K)            |
-|           |                              | wp   | [Q4](S3-OSimUnrQ4-editsim-EN.csv) (2,715)           | [Q4](S3-OSimUnrQ4-over_ft23-EN.csv) (1,149)           | [Q4](S3-OSimUnrQ4-editsim-TR.csv) (1,844)          | [Q4](S3-OSimUnrQ4-over_ft23-TR.csv) (539)             |
-| **Final** | **OSimUnr** (Q3+Q4 combined) | wp   | [OSimUnr-editsim ](OSimUnr-editsim-EN.rar)(~570K)   | [OSimUnr-over_ft23](OSimUnr-over_ft23-EN.csv) (~70K)  | [OSimUnr-editsim](OSimUnr-editsim-TR.rar)(~334K)   | [OSimUnr-over_ft23](OSimUnr-over_ft23-TR.csv)(~38)    |
+Stage 4 eliminates problematic word pairs using blacklist filters and defines semantically related and unrelated word pairs through a separate pipeline that leverages various morphological and semantic resources.
+
+
+| #         | Stage                                               | Type | English  - editsim (#)                                     | English - over_ft23 (#)                                      | Turkish -editsim (#)                                      | Turkish - over_ft23 (#)                                      |
+| ----------- | ----------------------------------------------------- | ------ | :----------------------------------------------------------- | -------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------------- |
+| 2         | Orthographically Similars (OSim)                    | wp   | [Q3](S2-OrthographicallySimilarsQ3-editsim-EN.rar) (~4.6M) | [Q3](S2-OrthographicallySimilarsQ3-over_ft23-EN.rar) (~1.1M) | [Q3](S2-OrthographicallySimilarsQ3-editsim-TR.rar) (~2M)  | [Q3](S2-OrthographicallySimilarsQ3-over_ft23-TR.csv) (~406K) |
+|           |                                                     | wp   | [Q4](S2-OrthographicallySimilarsQ4-editsim-EN.csv) (~54K)  | [Q4](S2-OrthographicallySimilarsQ4-over_ft23-EN.csv) (~37K)  | [Q4](S2-OrthographicallySimilarsQ4-editsim-TR.csv) (~31K) | [Q4](S2-OrthographicallySimilarsQ4-over_ft23-TR.csv) (~18K)  |
+| 3         | WordNet Relatedness Approximation                   | alg. | lch                                                        | lch                                                          | wup                                                       | wup                                                          |
+| 4         | Relatedness Filtering                               |      |                                                            |                                                              |                                                           |                                                              |
+|           | Unrelateds (Unr) Q3                                 | wp   | [Q3](S3-OSimUnrQ3-editsim-EN.rar) (~567K)                  | [Q3](S3-OSimUnrQ3-over_ft23-EN.csv) (~68K)                   | [Q3](S3-OSimUnrQ3-editsim-TR.csv) (~332K)                 | [Q4](S3-OSimUnrQ3-over_ft23-TR.csv) (~38K)                   |
+|           | Unrelateds (Unr) Q4                                 | wp   | [Q4](S3-OSimUnrQ4-editsim-EN.csv) (2,715)                  | [Q4](S3-OSimUnrQ4-over_ft23-EN.csv) (1,149)                  | [Q4](S3-OSimUnrQ4-editsim-TR.csv) (1,844)                 | [Q4](S3-OSimUnrQ4-over_ft23-TR.csv) (539)                    |
+|           | OSimBinary: Binary-Labelled Relateds and Unrelateds | wp   | [binary Q4](S3-OSimBinaryQ4-editsim-EN.csv) (53,771)       | n/a                                                          | [binary Q4](S3-OSimBinaryQ4-editsim-TR.csv) (30,689)      | n/a                                                          |
+| **Final** | **OSimUnr** (Q3+Q4 combined)                        | wp   | [OSimUnr-editsim ](OSimUnr-editsim-EN.rar)(~570K)          | [OSimUnr-over_ft23](OSimUnr-over_ft23-EN.csv) (~70K)         | [OSimUnr-editsim](OSimUnr-editsim-TR.rar)(~334K)          | [OSimUnr-over_ft23](OSimUnr-over_ft23-TR.csv)(~38)           |
+
+### Other Resources
+
+Here are additional resources related to the OSimUnr study that were not generated by the OSimUnr-Generator pipeline.
+
+| Name | Desc.| Type | English                                                           | Turkish                                                           |
+| ------- | ------ | ------------------------------------------------------------------- | --|------------------------------------------------------------------- |
+| WordSims  |Datasets combining multiple word relatedness datasets with human-annotated ground truth, normalized to a 0-1 scale. Used in Experiments 2a, 2b, and 4.  | wp | [WordSims-REL-EN.csv](others\WordSims-REL-EN.csv) (6,170 wps) | [WordSims-REL-TR.csv](/others/WordSims-REL-TR.csv) (592 wps) |
 
 ## Methodology and Notes
 
@@ -91,6 +107,7 @@ Stage 3 eliminates semantically related (e.g., relatedness) word-pairs using a s
 **wn_wup:** WordNet-based wup (Zhibiao Wu and Martha Palmer) semantic similarity/relatedness score.
 
 ## Cite
+
 The paper for this dataset is currently under peer review. Citation details will be provided here once available.
 
 <!--
