@@ -106,11 +106,7 @@ Here are additional resources related to the OSimUnr study that were not generat
 
 **wn_wup:** WordNet-based wup (Zhibiao Wu and Martha Palmer) semantic similarity/relatedness score.
 
-## Cite
 
-The paper for this dataset is currently under peer review. Citation details will be provided here once available.
-
-<!--
 ## Cite
 
 If you use these resources on your research, please cite the following paper:
@@ -119,8 +115,11 @@ Grammar or Crammer? The Role of Morphology on Distinguishing Orthographically Si
 [(Details)](http://www.gokhanercan.com/publications.aspx?paper=osimunr)
 
 ```bib
-@inproceedings{arxiv-id,
-Grammar or Crammer? The Role of Morphology on Distinguishing Orthographically Similar but Semantically Unrelated Words
+@article{ercan2025grammar,
+  title={Grammar or Crammer? The Role of Morphology in Distinguishing Orthographically Similar but Semantically Unrelated Words},
+  author={Ercan, G{\"o}khan and Yıldız, Olcay Taner},
+  journal={IEEE Access},
+  year={2025},
+  publisher={IEEE}
 }
 ```
--->
